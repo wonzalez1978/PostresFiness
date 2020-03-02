@@ -50,7 +50,7 @@ public class RecipeFitAdapter extends RecyclerView.Adapter<RecipeFitAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.recipes.size();
     }
 
     private int getIdDessertFit(int position){
