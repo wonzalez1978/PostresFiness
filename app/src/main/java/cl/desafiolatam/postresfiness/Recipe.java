@@ -1,21 +1,32 @@
 package cl.desafiolatam.postresfiness;
 
 public class Recipe {
+
+    private int id;
+
     private String nombre;
+    private String descripcion;
     private String ingrediente;
     private String preparacion;
-    private String imagen;
-    private String id;
 
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "nombre='" + nombre + '\'' +
-                ", ingrediente='" + ingrediente + '\'' +
-                ", preparacion='" + preparacion + '\'' +
-                ", imagen='" + imagen + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+    // Recurso de la imagen. Corresponde al ID del drawable asignado
+    private int imagen;
+
+    public Recipe(int id, String nombre, String descripcion, String ingrediente, String preparacion, int imagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.ingrediente = ingrediente;
+        this.preparacion = preparacion;
+        this.imagen = imagen;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -24,6 +35,14 @@ public class Recipe {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getIngrediente() {
@@ -42,22 +61,24 @@ public class Recipe {
         this.preparacion = preparacion;
     }
 
-    public String getImagen() {
+    public int getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(int imagen) {
         this.imagen = imagen;
     }
 
-    public String getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", ingrediente='" + ingrediente + '\'' +
+                ", preparacion='" + preparacion + '\'' +
+                ", imagen=" + imagen +
+                '}';
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
 }
 
