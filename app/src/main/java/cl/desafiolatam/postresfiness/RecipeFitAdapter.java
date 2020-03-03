@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import cl.desafiolatam.postresfiness.model.Recipe;
+
 public class RecipeFitAdapter extends RecyclerView.Adapter<RecipeFitAdapter.MyViewHolder> {
 
     private static final String TAG = "DatFitAdapter";
@@ -33,18 +35,18 @@ public class RecipeFitAdapter extends RecyclerView.Adapter<RecipeFitAdapter.MyVi
     @Override
     public RecipeFitAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(TAG, "onCreateViewHolder entrando...");
-        View mdessertfitView;
-        mdessertfitView = mLayoutInflater.inflate(R.layout.item_list_dessert, parent, false);
-        return new MyViewHolder(mdessertfitView);
+        View mRecipeView;
+        mRecipeView = mLayoutInflater.inflate(R.layout.item_list_dessert, parent, false);
+        return new MyViewHolder(mRecipeView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecipeFitAdapter.MyViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder entrando...");
-        Recipe dessertFit = recipes.get(position);
-        holder.setNombre(dessertFit.getNombre());
+        Recipe Recipe = recipes.get(position);
+        holder.setNombre(Recipe.getNombre());
         Glide.with(holder.mImagen.getContext())
-                .load(dessertFit.getImagen())
+                .load(Recipe.getImagen())
                 .into(holder.mImagen);
     }
 
@@ -53,7 +55,7 @@ public class RecipeFitAdapter extends RecyclerView.Adapter<RecipeFitAdapter.MyVi
         return this.recipes.size();
     }
 
-    private int getIdDessertFit(int position){
+    private int getIdRecipe(int position){
         return position != RecyclerView.NO_POSITION ? recipes.get(position).getId() : -1;
     }
 
@@ -62,11 +64,11 @@ public class RecipeFitAdapter extends RecyclerView.Adapter<RecipeFitAdapter.MyVi
         private TextView mNombre;
         private ImageView mImagen;
 
-        public MyViewHolder(View dessertfitView){
-            super(dessertfitView);
-            mNombre = dessertfitView.findViewById(R.id.list_item_textView);
-            mImagen = dessertfitView.findViewById(R.id.avatar);
-            dessertfitView.setOnClickListener(this);
+        public MyViewHolder(View RecipeView){
+            super(RecipeView);
+            mNombre = RecipeView.findViewById(R.id.list_item_textView);
+            mImagen = RecipeView.findViewById(R.id.avatar);
+            RecipeView.setOnClickListener(this);
             mNombre.setOnClickListener(this);
             mImagen.setOnClickListener(this);
         }
@@ -77,11 +79,11 @@ public class RecipeFitAdapter extends RecyclerView.Adapter<RecipeFitAdapter.MyVi
         @Override
         public void onClick(View v) {
             Log.d(TAG, "onClick entrando...");
-            listener.onClick(this, getIdDessertFit(getAdapterPosition()));
+            listener.onClick(this, getIdRecipe(getAdapterPosition()));
         }
     }
 
     public interface OnItemClickListener{
-        void onClick(MyViewHolder myViewHolder, int idDessertFit);
+        void onClick(MyViewHolder myViewHolder, int idRecipe);
     }
 }

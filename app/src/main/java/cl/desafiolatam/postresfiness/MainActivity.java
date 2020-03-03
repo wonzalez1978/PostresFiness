@@ -2,10 +2,13 @@ package cl.desafiolatam.postresfiness;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import cl.desafiolatam.postresfiness.data.DataSource;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecipeFitAdapter.OnItemClickListener onItemClickListener = new RecipeFitAdapter.OnItemClickListener() {
         @Override
-        public void onClick(RecipeFitAdapter.MyViewHolder myViewHolder, int idDessertFit) {
+        public void onClick(RecipeFitAdapter.MyViewHolder myViewHolder, int idRecipe) {
             Log.d(TAG, "onClick entrando, método no implementado");
         }
     };
@@ -30,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(gridLayoutManager);
+
+        mRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "bla");
+            }
+        });
 
         RecipeFitAdapter adapter = new RecipeFitAdapter(this, DataSource.getRecipes(), onItemClickListener);
         mRecyclerView.setAdapter(adapter);

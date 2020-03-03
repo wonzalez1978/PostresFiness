@@ -1,4 +1,4 @@
-package cl.desafiolatam.postresfiness;
+package cl.desafiolatam.postresfiness.model;
 
 public class Recipe {
 
